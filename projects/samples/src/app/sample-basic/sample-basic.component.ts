@@ -2,16 +2,16 @@ import {Component} from '@angular/core';
 import {FormDefinition, FormState} from "@material-formtastic/types";
 import {Observable} from "rxjs";
 import {MaterialFormtasticService} from "@material-formtastic/material-formtastic.service";
-import {RxjsLoader} from "../helper/rxjs-loader.service";
 import {DemoItem} from "../helper/demo.item";
+import {DemoItemLoader} from "../helper/sample-helper";
 
 @Component({
   selector: 'app-sample-basic',
   providers: [
-    RxjsLoader,
+    DemoItemLoader,
     {
       provide: MaterialFormtasticService,
-      deps: [RxjsLoader],
+      deps: [DemoItemLoader],
     }
   ],
   templateUrl: './sample-basic.component.html',

@@ -1,58 +1,58 @@
 {
   "id": {
     "type": "number",
-    "span": 2,
+    "span": 4,
     "required": true,
     "isPrimaryKey": true
   },
   "id2": {
     "type": "number",
-    "span": 2,
+    "span": 4,
     "readonly": true
   },
   "id3": {
     "type": "number",
-    "span": 2,
+    "span": 4,
     "disabled": true
   },
   "name": {
     "type": "string",
     "prefix": "person",
-    "span": 3,
+    "span": 8,
     "start": 1,
     "maxLength": 6,
     "required": true
   },
   "name2": {
     "type": "string",
-    "span": 3,
+    "span": 8,
     "suffix": "person",
     "maxLength": 6,
     "readonly": true
   },
   "name3": {
     "type": "string",
-    "span": 3,
+    "span": 8,
     "disabled": true
   },
   "description": {
     "type": "text",
-    "span": 3,
+    "span": 8,
     "start": 1,
     "maxLength": 4000
   },
   "description2": {
     "type": "text",
-    "span": 3
+    "span": 8
   },
   "description3": {
     "type": "text",
-    "span": 3,
+    "span": 8,
     "disabled": true
   },
   "color": {
     "type": "select",
-    "span": 2,
+    "span": 4,
     "start": 1,
     "required": true,
     "options": [
@@ -72,7 +72,7 @@
   },
   "color2": {
     "type": "select",
-    "span": 2,
+    "span": 4,
     "withEmpty": true,
     "options": [
       {
@@ -91,7 +91,7 @@
   },
   "color3": {
     "type": "select",
-    "span": 2,
+    "span": 4,
     "multiple": true,
     "options": [
       {
@@ -110,34 +110,34 @@
   },
   "enabled": {
     "type": "switch",
-    "span": 2,
+    "span": 4,
     "start": 1,
     "required": true
   },
   "enabled2": {
     "type": "switch",
     "color": "accent",
-    "span": 2
+    "span": 4
   },
   "enabled3": {
     "type": "switch",
     "color": "warn",
-    "span": 2
+    "span": 4
   },
   "confirmed": {
     "type": "checkbox",
-    "span": 2,
+    "span": 4,
     "start": 1
   },
   "confirmed2": {
     "type": "checkbox",
     "color": "accent",
     "labelPosition": "before",
-    "span": 2
+    "span": 4
   },
   "confirmed3": {
     "type": "checkbox",
     "color": "warn",
-    "span": 2
+    "span": 4
   }
 }

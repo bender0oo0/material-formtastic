@@ -1,4 +1,4 @@
-import { Def, InternalFormField } from './types';
+import { Definition, InternalFormField } from './types';
 import {FormControl, Validators} from "@angular/forms";
 
 export const createStyle = (x: InternalFormField): string => {
@@ -13,7 +13,7 @@ export const createStyle = (x: InternalFormField): string => {
     return style.trim();
 };
 
-export const createFields = <T extends object>(definition: Def<T>) =>
+export const createFields = <T extends object>(definition: Definition<T>) =>
     Object.keys(definition)
         .map(x => ({
             ...definition[x as keyof T],

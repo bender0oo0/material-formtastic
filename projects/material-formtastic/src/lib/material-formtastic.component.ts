@@ -2,7 +2,6 @@ import {ChangeDetectionStrategy, Component, Input, Output, ViewChild, ViewEncaps
 import {debounceTime, map, Observable, of, skipWhile, switchMap, tap} from "rxjs";
 import {InternalFormField, UnknownFormDefinition, UntypedFormState, FormFieldType} from "./types";
 import {FormRecord, NgForm} from "@angular/forms";
-import {MaterialFormtasticService} from "./material-formtastic.service";
 import {createFormControl} from "./helper";
 
 @Component({
@@ -55,5 +54,6 @@ export class MaterialFormtasticComponent {
   );
 
   onSubmit() {
+    this.form.patchValue([]);
   }
 }

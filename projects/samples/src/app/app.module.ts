@@ -14,15 +14,19 @@ import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {DebugComponent} from "./debug/debug.component";
-
+import {SampleDocsComponent} from "./sample-docs/sample-docs.component";
+import {DemoItemLoader, NewsLoader} from "./helper/sample-helper";
+import {SampleMatCardComponent} from "./sample-mat-card/sample-mat-card.component";
+import {MatCardModule} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
-  declarations: [SampleBasicComponent, SampleBasicHttpLoaderComponent, SampleBasicEmptyFormComponent, DebugComponent, AppComponent],
-  imports: [BrowserModule, RouterModule, HttpClientModule, MaterialFormtasticModule, MatSidenavModule, MatListModule, MatIconModule, MatToolbarModule],
+  declarations: [SampleBasicComponent, SampleBasicHttpLoaderComponent, SampleBasicEmptyFormComponent, SampleDocsComponent, SampleMatCardComponent, DebugComponent, AppComponent],
+  imports: [BrowserModule, RouterModule, HttpClientModule, MaterialFormtasticModule, MatSidenavModule, MatListModule, MatIconModule, MatToolbarModule, MatCardModule, MatButtonModule],
   exports: [],
   providers: [
     provideRouter(routes),
-    provideAnimations()
+    provideAnimations(),
   ],
   bootstrap: [AppComponent],
 })

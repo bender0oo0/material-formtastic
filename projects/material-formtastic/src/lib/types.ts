@@ -2,8 +2,8 @@ import {createFields} from './helper';
 
 export type PrimaryKey = string | number;
 
-export type Def<T extends object> = {
-  [K in keyof T]: InternalFormField;
+export type Definition<T extends object> = {
+  [K in keyof T]: FormInputField | FormSelectField;
 };
 
 export class FormDefinition<T extends object> {
@@ -11,7 +11,7 @@ export class FormDefinition<T extends object> {
   fields: InternalFormField[];
   primaryKey: PrimaryKey | undefined;
 
-  constructor(private definition: Def<T>) {
+  constructor(private definition: Definition<T>) {
     this.fields = createFields<T>(this.definition);
   }
 

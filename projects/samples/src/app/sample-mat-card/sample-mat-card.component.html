@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Super card</mat-card-title>
+    <mat-card-subtitle>Super subtitle</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <material-formtastic [definition]="formDef" (changes)="onChanges($event)" #form></material-formtastic>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="form.submit($event)">Submit</button>
+  </mat-card-actions>
+</mat-card>
+
+<div *ngIf="formState.current">
+  <h4>Submit:</h4>
+  <pre>{{ formState.current | json }}</pre>
+</div>

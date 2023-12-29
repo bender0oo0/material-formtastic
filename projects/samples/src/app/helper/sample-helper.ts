@@ -1,15 +1,30 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
 import {Observable, of} from "rxjs";
-import {FormDefinition, PrimaryKey} from '@material-formtastic/types';
+import {Definition, FormDefinition, FormFieldType, PrimaryKey} from '@material-formtastic/types';
 import {AbstractLoaderService} from "@material-formtastic/abstract-loader.service";
 
-@Injectable()
-export class RxjsLoader extends AbstractLoaderService {
+export type News = {
+  id: number;
+  title: string;
+  text: string;
+}
 
-  constructor(private http: HttpClient) {
-    super();
+@Injectable()
+export class NewsLoader extends AbstractLoaderService {
+
+  override loadValues<T extends object>(primaryKey: PrimaryKey): Observable<T> {
+    return of({id: 1, title: 'great news', text: 'Breaking news and analysis on U.S.'} as any);
   }
+
+  override loadDefinition = <T extends object>() => {
+    console.log('ah', new FormDefinition<T>(defNews as any))
+    const a = new FormDefinition<T>(defNews as any);
+    return of(a);
+  };
+}
+
+@Injectable()
+export class DemoItemLoader extends AbstractLoaderService {
 
   override loadValues<T extends object>(primaryKey: PrimaryKey): Observable<T> {
     return of(item);
@@ -18,6 +33,26 @@ export class RxjsLoader extends AbstractLoaderService {
   override loadDefinition = <T extends object>() => of(new FormDefinition<T>(def));
 }
 
+const defNews: Definition<News> = {
+  id: {
+    type: FormFieldType.NUMBER,
+    span: 6,
+    required: true,
+    isPrimaryKey: true
+  },
+  title: {
+    type: FormFieldType.STRING,
+    required: true,
+    maxLength: 100,
+    span: 18
+  },
+  text: {
+    type: FormFieldType.TEXT,
+    required: true,
+    maxLength: 4000,
+    span: 24
+  }
+};
 
 const item: any = {
   "id": 11,
@@ -39,57 +74,57 @@ const item: any = {
 const def: any = {
   "id": {
     "type": "number",
-    "span": 2,
+    "span": 4,
     "required": true,
     "isPrimaryKey": true
   },
   "id2": {
     "type": "number",
-    "span": 2,
+    "span": 4,
     "readonly": true
   },
   "id3": {
     "type": "number",
-    "span": 2,
+    "span": 4,
     "disabled": true
   },
   "name": {
     "type": "string",
     "prefix": "person",
-    "span": 3,
+    "span": 8,
     "start": 1,
     "maxLength": 6,
     "required": true
   },
   "name2": {
     "type": "string",
-    "span": 3,
+    "span": 8,
     "suffix": "person",
     "readonly": true
   },
   "name3": {
     "type": "string",
-    "span": 3,
+    "span": 8,
     "disabled": true
   },
   "description": {
     "type": "text",
-    "span": 3,
+    "span": 8,
     "start": 1,
     "maxLength": 4000
   },
   "description2": {
     "type": "text",
-    "span": 3
+    "span": 8
   },
   "description3": {
     "type": "text",
-    "span": 3,
+    "span": 8,
     "disabled": true
   },
   "color": {
     "type": "select",
-    "span": 2,
+    "span": 4,
     "start": 1,
     "required": true,
     "options": [
@@ -100,7 +135,7 @@ const def: any = {
   },
   "color2": {
     "type": "select",
-    "span": 2,
+    "span": 4,
     "withEmpty": true,
     "options": [
       {"id": 1, "value": "red"},
@@ -110,7 +145,7 @@ const def: any = {
   },
   "color3": {
     "type": "select",
-    "span": 2,
+    "span": 4,
     "multiple": true,
     "options": [
       {"id": 1, "value": "red"},
@@ -120,35 +155,35 @@ const def: any = {
   },
   "enabled": {
     "type": "switch",
-    "span": 2,
+    "span": 4,
     "start": 1,
     "required": true
   },
   "enabled2": {
     "type": "switch",
     "color": "accent",
-    "span": 2
+    "span": 4
   },
   "enabled3": {
     "type": "switch",
     "color": "warn",
-    "span": 2
+    "span": 4
   },
 
   "confirmed": {
     "type": "checkbox",
-    "span": 2,
+    "span": 4,
     "start": 1
   },
   "confirmed2": {
     "type": "checkbox",
     "color": "accent",
     "labelPosition": "before",
-    "span": 2
+    "span": 4
   },
   "confirmed3": {
     "type": "checkbox",
     "color": "warn",
-    "span": 2
+    "span": 4
   }
 }
