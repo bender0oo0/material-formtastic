@@ -7,7 +7,7 @@ import {MaterialFormtasticService} from "./material-formtastic.service";
 
 export class HttpLoaderEndpoint {
   url?: string;
-  build = (primaryKey?: PrimaryKey) => primaryKey ? `${this.url}/id` : `${this.url}/head/id`;
+  build = (primaryKey?: PrimaryKey) => primaryKey ? `${this.url}/${primaryKey}` : `${this.url}/options`;
 }
 
 export const HttpLoaderEndpointToken = new InjectionToken<HttpLoaderEndpoint>('CCC', {
@@ -21,6 +21,25 @@ export const createOwnBuild = (build: (primaryKey: PrimaryKey) => string) => {
       useValue: {build}
     },
     HttpLoaderService,
+    {
+      provide: MaterialFormtasticService,
+      deps: [HttpLoaderService],
+    }
+  ]
+}
+
+
+export const createDefaultBuild = (url: string) => {
+  return [
+    {
+      provide: HttpLoaderEndpointToken,
+      useFactory: () => {
+        const e = new HttpLoaderEndpoint();
+        e.url = url;
+        return e;
+      }
+    },
+      HttpLoaderService,
     {
       provide: MaterialFormtasticService,
       deps: [HttpLoaderService],

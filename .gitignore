@@ -53,3 +53,5 @@ Thumbs.db
 !.yarn/sdks
 !.yarn/versions
 /projects/material-formtastic/node_modules/
+/sample-asp.net-core/Samples/Api/bin/
+/sample-asp.net-core/Samples/Api/obj/
