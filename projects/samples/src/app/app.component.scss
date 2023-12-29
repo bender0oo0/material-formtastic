@@ -1,0 +1,21 @@
+:host {
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  grid-template-rows: min-content 1fr;
+}
+
+:host {
+  --form-grid-gap: .5em;
+  --form-grid-margin: .5em;
+}
+
+mat-drawer-content {
+  padding: var(--form-grid-margin);
+}

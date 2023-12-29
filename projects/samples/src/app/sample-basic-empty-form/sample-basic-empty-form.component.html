@@ -1,0 +1,6 @@
+<material-formtastic [definition]="formDef" (changes)="onChanges($event)" #form></material-formtastic>
+<sample-debug [formDef]="formDef" [formState]="formState" ></sample-debug>
+
+<button mat-raised-button (click)="form.submit($event)">
+  Submit
+</button>

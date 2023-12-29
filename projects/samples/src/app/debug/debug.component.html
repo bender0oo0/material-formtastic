@@ -1,0 +1,7 @@
+<code *ngIf="formDef | async as def">
+  <div>PK: {{ def.primaryKey  }}</div>
+  <div>Fields: <ng-container *ngFor="let field of def.fields">{{ field.field }}, </ng-container></div>
+  <div>IsValid: {{ formState?.isValid | json }}</div>
+  <div>Initial: <pre>{{ formState?.initial | json }}</pre></div>
+  <div>Current: <pre>{{ formState?.current | json }}</pre></div>
+</code>

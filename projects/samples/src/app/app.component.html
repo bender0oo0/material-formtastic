@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Sample</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side" opened="true">
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/basic']">Basic with own loader</a>
+      <a mat-list-item [routerLink]="['/basic-http']">Basic with http loader</a>
+      <a mat-list-item [routerLink]="['/basic-empty']">Basic with empty form</a>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
