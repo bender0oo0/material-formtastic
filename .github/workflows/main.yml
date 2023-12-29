@@ -21,6 +21,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: yarn install
     - run: yarn build-samples
+    - run: cp dist/samples/browser/index.html dist/samples/browser/404.html
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4
       with:
