@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "github-samples": "ng build --output-path docs --base-href /material-formtastic/"
+    "deploy": "ng build samples --base-href=/angular-ci-cd/"
   },
   "private": true,
   "dependencies": {
