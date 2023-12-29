@@ -1,0 +1,28 @@
+$grid-columns: 12;
+
+.material-formtastic-form {
+    display: grid;
+    grid-template-columns: repeat($grid-columns, 1fr);
+    grid-auto-rows: min-content;
+    grid-gap: var(--form-grid-gap);
+    margin: var(--form-grid-margin);
+
+
+    mat-form-field, mat-slide-toggle, mat-checkbox {
+      grid-column: 1 / span $grid-columns;
+    }
+
+    @for $i from 1 through $grid-columns {
+      @for $ii from 1 through $grid-columns {
+        .span-#{$i}.start-#{$ii} {
+          grid-column: $ii / span $i;
+        }
+      }
+      .span-#{$i} {
+        grid-column: auto / span $i;
+      }
+      .start-#{$i} {
+        grid-column-start: $i;
+      }
+    }
+  }

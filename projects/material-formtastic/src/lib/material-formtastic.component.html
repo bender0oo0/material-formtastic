@@ -1,0 +1,51 @@
+<ng-content></ng-content>
+<form class="material-formtastic-form" [formGroup]="form" #ngForm="ngForm" *ngIf="_definition | async" (ngSubmit)="onSubmit()">
+  <ng-container *ngFor="let def of controls | async">
+    <ng-container [ngSwitch]="def.type">
+      <mat-form-field *ngSwitchCase="FormFieldType.STRING" [ngClass]="def.ngClass" #field>
+        <mat-label>{{def.field}}</mat-label>
+        <input matInput #input [formControlName]="def.field" [readonly]="def?.readonly ?? false" />
+        <mat-hint *ngIf="def.maxLength" align="end">{{input?.value?.length ?? 0}}/{{def.maxLength }}</mat-hint>
+
+        <mat-error *ngIf="form.get(def.field)?.getError('required') as error">{{ error | json }}</mat-error>
+        <mat-error *ngIf="form.get(def.field)?.getError('maxlength') as error">{{ error | json }}</mat-error>
+
+        <mat-icon *ngIf="def?.prefix" [fontIcon]="def.prefix ?? ''" matPrefix></mat-icon>
+        <mat-icon *ngIf="def?.suffix" [fontIcon]="def.suffix ?? ''" matSuffix></mat-icon>
+      </mat-form-field>
+
+      <mat-form-field *ngSwitchCase="FormFieldType.TEXT" [ngClass]="def.ngClass">
+        <mat-label>{{def.field}}</mat-label>
+        <textarea matInput #input [formControlName]="def.field" [readonly]="def?.readonly ?? false"></textarea>
+        <mat-hint *ngIf="def.maxLength" align="end">{{input?.value?.length ?? 0}}/ {{ def.maxLength }}</mat-hint>
+
+        <mat-icon *ngIf="def?.prefix" [fontIcon]="def.prefix ?? ''" matPrefix></mat-icon>
+        <mat-icon *ngIf="def?.suffix" [fontIcon]="def.suffix ?? ''" matSuffix></mat-icon>
+      </mat-form-field>
+
+      <mat-form-field *ngSwitchCase="FormFieldType.NUMBER" [ngClass]="def.ngClass">
+        <mat-label>{{def.field}}</mat-label>
+        <input matInput #input type="number" [formControlName]="def.field" [readonly]="def?.readonly ?? false" />
+
+        <mat-icon *ngIf="def?.prefix" [fontIcon]="def.prefix ?? ''" matPrefix></mat-icon>
+        <mat-icon *ngIf="def?.suffix" [fontIcon]="def.suffix ?? ''" matSuffix></mat-icon>
+      </mat-form-field>
+
+      <mat-form-field *ngSwitchCase="FormFieldType.SELECT" [ngClass]="def.ngClass">
+        <mat-label>{{def.field}}</mat-label>
+        <mat-select [multiple]="def.multiple" [formControlName]="def.field">
+          <mat-option *ngIf="def.withEmpty"></mat-option>
+          <mat-option *ngFor="let o of def.options" [value]="o.id">{{o.value}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-checkbox *ngSwitchCase="FormFieldType.CHECKBOX" [ngClass]="def.ngClass" [formControlName]="def.field" [labelPosition]="def?.labelPosition ?? 'after'">{{def.field}}</mat-checkbox>
+
+      <mat-slide-toggle *ngSwitchCase="FormFieldType.SWITCH" [ngClass]="def.ngClass" [color]="def.color ?? 'primary'"
+        [formControlName]="def.field">
+        {{def.field}}
+      </mat-slide-toggle>
+
+    </ng-container>
+  </ng-container>
+</form>
