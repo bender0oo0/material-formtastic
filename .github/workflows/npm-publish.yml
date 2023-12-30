@@ -18,7 +18,45 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: yarn install
       - run: yarn build-npm
-      - run: cd dist/material-formtastic
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: dist/
+
+  debug:
+    needs: build
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+          path: dist
+      - name: List Files in dist
+        run: ls -R dist
+      - name: Print Current Directory
+        run: pwd
+
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+          path: dist
+      - name: List Files in dist
+        run: ls -R dist
+      - name: Changing Directory
+        run: cd dist/material-formtastic
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
