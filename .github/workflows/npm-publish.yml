@@ -27,6 +27,7 @@ jobs:
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
+    environment: prod
     steps:
       - uses: actions/setup-node@v3
         with:
