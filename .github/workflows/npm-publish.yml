@@ -51,13 +51,19 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-artifacts
-          path: dist
+          path: .
       - name: List Files in dist
         run: ls -R dist
       - name: Changing Directory
-        run: cd dist/material-formtastic
+        run: cd dist
+      - name: Print Current Directory
+        run: ls .
+      - name: Changing Directory
+        run: cd material-formtastic
       - name: Print Current Directory
         run: pwd
+      - name: List Files in dist
+        run: ls -R dist
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
