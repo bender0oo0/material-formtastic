@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {FormDefinition, FormState} from "@material-formtastic/types";
+import {FormDefinition, UntypedFormState} from "@material-formtastic/types";
 import {Observable} from "rxjs";
 import {DemoItem} from "../helper/demo.item";
 
@@ -9,6 +9,6 @@ import {DemoItem} from "../helper/demo.item";
   styleUrl: './debug.component.scss'
 })
 export class DebugComponent {
-  @Input() formState: FormState<DemoItem> | undefined;
+  @Input() formState: UntypedFormState | undefined;
   @Input() formDef: Observable<FormDefinition<DemoItem>> | undefined;
 }

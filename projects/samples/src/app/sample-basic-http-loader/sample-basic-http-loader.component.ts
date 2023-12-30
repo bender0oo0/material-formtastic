@@ -1,6 +1,6 @@
-import {Component, Injectable} from '@angular/core';
-import {last, Observable} from "rxjs";
-import {FormDefinition, FormState, PrimaryKey} from "@material-formtastic/types";
+import {Component} from '@angular/core';
+import {Observable} from "rxjs";
+import {FormDefinition, PrimaryKey, UntypedFormState} from "@material-formtastic/types";
 import {MaterialFormtasticService} from "@material-formtastic/material-formtastic.service";
 import {DemoItem} from "../helper/demo.item";
 import {createOwnBuild} from "@material-formtastic/http-loader.service";
@@ -8,7 +8,7 @@ import {createOwnBuild} from "@material-formtastic/http-loader.service";
   selector: 'app-sample-basic-http-loader',
   providers: [
     ... createOwnBuild((forDefinition: boolean, primaryKey?: PrimaryKey) => {
-      return !forDefinition ? 'assets/demo-1.json' : 'assets/demo-definition.json';
+      return forDefinition ? 'assets/demo-definition.json' : `assets/demo-${primaryKey}.json`;
     })
   ],
   templateUrl: './sample-basic-http-loader.component.html',
@@ -16,11 +16,11 @@ import {createOwnBuild} from "@material-formtastic/http-loader.service";
 })
 export class SampleBasicHttpLoaderComponent {
   formDef: Observable<FormDefinition<DemoItem>> | undefined;
-  formState: FormState<DemoItem> = {};
+  formState: UntypedFormState = {};
 
   constructor(service: MaterialFormtasticService) {
     this.formDef = service.load<DemoItem>(1);
   }
 
-  onChanges = (x: FormState<DemoItem>) => this.formState = x;
+  onChanges = (x: UntypedFormState) => this.formState = x;
 }

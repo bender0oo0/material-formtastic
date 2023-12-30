@@ -17,7 +17,6 @@ export class NewsLoader extends AbstractLoaderService {
   }
 
   override loadDefinition = <T extends object>(primaryKey?: PrimaryKey) => {
-    console.log('ah', new FormDefinition<T>(defNews as any))
     const a = new FormDefinition<T>(defNews as any);
     return of(a);
   };

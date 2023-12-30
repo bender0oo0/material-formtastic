@@ -39,7 +39,7 @@ export type InternalFormField = FormInputField & FormCheckboxField & FormSelectF
 export type Field = {
   isPrimaryKey?: boolean;
   type: FormFieldType;
-  value?: any;
+  value?: unknown;
 }
 
 export type FormInputField = Field & FormFieldStyle & FormFieldValidation;
@@ -89,7 +89,7 @@ export enum FieldStyleColor {
   warn = 'warn'
 }
 
-export type UntypedFormState = FormState<any>;
+export type UntypedFormState = FormState<unknown>;
 
 export type FormState<T> = {
   initial?: T;

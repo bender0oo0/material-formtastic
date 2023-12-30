@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormDefinition, FormState} from "@material-formtastic/types";
+import {FormDefinition, UntypedFormState} from "@material-formtastic/types";
 import {Observable} from "rxjs";
 import {MaterialFormtasticService} from "@material-formtastic/material-formtastic.service";
 import {DemoItem} from "../helper/demo.item";
@@ -20,11 +20,12 @@ import {DemoItemLoader} from "../helper/sample-helper";
 export class SampleBasicComponent {
 
   formDef: Observable<FormDefinition<DemoItem>> | undefined;
-  formState: FormState<DemoItem> = {};
+  formState: UntypedFormState = {};
 
   constructor(service: MaterialFormtasticService) {
     this.formDef = service.load<DemoItem>(1);
   }
 
-  onChanges = (x: FormState<DemoItem>) => this.formState = x;
+
+  onChanges = (x: UntypedFormState) => this.formState = x;
 }

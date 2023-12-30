@@ -16,7 +16,7 @@ export class MaterialFormtasticComponent {
   FormFieldType = FormFieldType;
   controls: Observable<InternalFormField[] | undefined> | undefined;
   _definition: Observable<UnknownFormDefinition | undefined> | undefined;
-  initial: any;
+  _initial: { [key: string]: unknown } | undefined;
 
   @ViewChild('ngForm') ngForm: NgForm | undefined;
 
@@ -24,7 +24,8 @@ export class MaterialFormtasticComponent {
   form = new FormRecord({});
 
   @Output()
-  submit = ($event: Event) => this.ngForm?.onSubmit($event);
+  submitForm = ($event: Event) => this.ngForm?.onSubmit($event);
+
 
   @Input()
   public set definition(value: Observable<UnknownFormDefinition | undefined> | undefined) {
@@ -35,17 +36,17 @@ export class MaterialFormtasticComponent {
         for (const field of x) {
           this.form.addControl(field.field, createFormControl(field), { emitEvent: false });
         }
-        this.initial = this.form.getRawValue();
+        this._initial = this.form.getRawValue();
       })
     );
   }
 
   @Output()
   changes = this.form.valueChanges.pipe(
-    skipWhile(x => !this._definition),
+    skipWhile(() => !this._definition),
     switchMap(x => {
       return of({
-        initial: { ... this.initial },
+        initial: { ... this._initial },
         current: { ...x },
         isValid: this.form.valid
       } as UntypedFormState);
