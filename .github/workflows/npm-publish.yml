@@ -59,6 +59,10 @@ jobs:
       - name: Print Current Directory
         run: ls .
       - name: Changing Directory
+        run: cd dist
+      - name: Print Current Directory
+        run: ls .
+      - name: Changing Directory
         run: cd material-formtastic
       - name: Print Current Directory
         run: pwd
