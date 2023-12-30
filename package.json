@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "build-samples": "ng build samples --base-href=/material-formtastic/"
+    "build-samples": "ng build samples --base-href=/material-formtastic/",
+    "build-npm": "ng build material-formtastic"
   },
   "private": true,
   "dependencies": {

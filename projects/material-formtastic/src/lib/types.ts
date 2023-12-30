@@ -28,8 +28,7 @@ export class FormDefinition<T extends object> {
   }
 }
 
-export class UnknownFormDefinition extends FormDefinition<object> {
-}
+export class UnknownFormDefinition extends FormDefinition<object> {}
 
 export type InternalFormField = FormInputField & FormCheckboxField & FormSelectField & {
   field: string;

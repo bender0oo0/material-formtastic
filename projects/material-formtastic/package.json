@@ -8,5 +8,24 @@
   "dependencies": {
     "tslib": "2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/bender0oo0/material-formtastic"
+  },
+  "homepage": "https://github.com/bender0oo0/material-formtastic",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bender0oo0/material-formtastic"
+  },
+  "author": "Marc Frost",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "angular material",
+    "formalar",
+    "formalar remote"
+  ]
 }
