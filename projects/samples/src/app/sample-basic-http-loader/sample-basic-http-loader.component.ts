@@ -7,8 +7,8 @@ import {createOwnBuild} from "@material-formtastic/http-loader.service";
 @Component({
   selector: 'app-sample-basic-http-loader',
   providers: [
-    ... createOwnBuild((primaryKey: PrimaryKey) => {
-      return primaryKey ? 'assets/demo-1.json' : 'assets/demo-definition.json';
+    ... createOwnBuild((forDefinition: boolean, primaryKey?: PrimaryKey) => {
+      return !forDefinition ? 'assets/demo-1.json' : 'assets/demo-definition.json';
     })
   ],
   templateUrl: './sample-basic-http-loader.component.html',

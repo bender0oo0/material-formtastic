@@ -7,14 +7,20 @@ import {MaterialFormtasticService} from "./material-formtastic.service";
 
 export class HttpLoaderEndpoint {
   url?: string;
-  build = (primaryKey?: PrimaryKey) => primaryKey ? `${this.url}/${primaryKey}` : `${this.url}/options`;
+  build = (forDefinition: boolean, primaryKey?: PrimaryKey) => {
+    let url = forDefinition ? `${this.url}/options` : `${this.url}`;
+    if (primaryKey) {
+      url = `${url}/${primaryKey}`;
+    }
+    return url;
+  };
 }
 
-export const HttpLoaderEndpointToken = new InjectionToken<HttpLoaderEndpoint>('CCC', {
+export const HttpLoaderEndpointToken = new InjectionToken<HttpLoaderEndpoint>('HttpLoaderEndpointToken', {
   factory: () => new HttpLoaderEndpoint(),
 });
 
-export const createOwnBuild = (build: (primaryKey: PrimaryKey) => string) => {
+export const createOwnBuild = (build: (forDefinition: boolean, primaryKey?: PrimaryKey) => string) => {
   return [
     {
       provide: HttpLoaderEndpointToken,
@@ -54,13 +60,13 @@ export class HttpLoaderService extends AbstractLoaderService {
     super();
   }
 
-  override loadValues<T extends object>(primaryKey: PrimaryKey): Observable<T> {
-    const url = this.endpoint.build(primaryKey);
+  override loadValue<T extends object>(primaryKey: PrimaryKey): Observable<T> {
+    const url = this.endpoint.build(false, primaryKey);
     return this.http.get<T>(url);
   }
 
-  override loadDefinition<T extends object>() {
-    const url = this.endpoint.build();
+  override loadDefinition<T extends object>(primaryKey?: PrimaryKey) {
+    const url = this.endpoint.build(true, primaryKey);
     return this.http.get<Definition<T>>(url).pipe(
       map(x => new FormDefinition<T>(x)),
     );

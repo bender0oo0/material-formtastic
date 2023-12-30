@@ -10,8 +10,8 @@ import {createOwnBuild, HttpLoaderEndpointToken, HttpLoaderService} from "@mater
   templateUrl: './sample-basic-empty-form.component.html',
   styleUrl: './sample-basic-empty-form.component.scss',
   providers: [
-    ... createOwnBuild((primaryKey: PrimaryKey) => {
-      return primaryKey ? 'assets/demo-1.json' : 'assets/demo-definition.json';
+    ... createOwnBuild((forDefinition: boolean, primaryKey?: PrimaryKey) => {
+      return !forDefinition ? 'assets/demo-1.json' : 'assets/demo-definition.json';
     })
   ],
 })
@@ -20,7 +20,7 @@ export class SampleBasicEmptyFormComponent {
   formState: FormState<DemoItem> = {};
 
   constructor(service: MaterialFormtasticService) {
-    this.formDef = service.load<DemoItem>();
+    this.formDef = service.loadWithoutValue<DemoItem>();
   }
 
   onChanges = (x: FormState<DemoItem>) => this.formState = x;

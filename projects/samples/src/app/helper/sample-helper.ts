@@ -12,11 +12,11 @@ export type News = {
 @Injectable()
 export class NewsLoader extends AbstractLoaderService {
 
-  override loadValues<T extends object>(primaryKey: PrimaryKey): Observable<T> {
+  override loadValue<T extends object>(primaryKey: PrimaryKey): Observable<T> {
     return of({id: 1, title: 'great news', text: 'Breaking news and analysis on U.S.'} as any);
   }
 
-  override loadDefinition = <T extends object>() => {
+  override loadDefinition = <T extends object>(primaryKey?: PrimaryKey) => {
     console.log('ah', new FormDefinition<T>(defNews as any))
     const a = new FormDefinition<T>(defNews as any);
     return of(a);
@@ -26,11 +26,11 @@ export class NewsLoader extends AbstractLoaderService {
 @Injectable()
 export class DemoItemLoader extends AbstractLoaderService {
 
-  override loadValues<T extends object>(primaryKey: PrimaryKey): Observable<T> {
+  override loadValue<T extends object>(primaryKey: PrimaryKey): Observable<T> {
     return of(item);
   }
 
-  override loadDefinition = <T extends object>() => of(new FormDefinition<T>(def));
+  override loadDefinition = <T extends object>(primaryKey?: PrimaryKey) => of(new FormDefinition<T>(def));
 }
 
 const defNews: Definition<News> = {
