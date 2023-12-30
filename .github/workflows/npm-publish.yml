@@ -51,9 +51,9 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-artifacts
-          path: .
+          path: dist
       - name: List Files in dist
-        run: ls -R dist
+        run: ls -R .
       - name: Changing Directory
         run: cd dist
       - name: Print Current Directory
