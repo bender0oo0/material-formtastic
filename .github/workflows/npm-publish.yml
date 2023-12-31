@@ -18,7 +18,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: yarn install
       - run: yarn build-npm
-      - run: cp README.md dist/material-formtastic/README.md
+      - run: cp README.md dist/packages/material-formtastic/README.md
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -40,6 +40,6 @@ jobs:
           name: build-artifacts
           path: dist
       - run: npm publish
-        working-directory: dist/material-formtastic
+        working-directory: dist/packages/material-formtastic
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}

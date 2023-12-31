@@ -1,0 +1,37 @@
+{
+  "name": "material-formtastic",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/material-formtastic/src",
+  "prefix": "material-formtastic",
+  "tags": ["material"],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "packages/material-formtastic/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/material-formtastic/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "packages/material-formtastic/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/material-formtastic/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  }
+}
