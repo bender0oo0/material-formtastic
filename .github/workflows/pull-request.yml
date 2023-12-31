@@ -13,5 +13,7 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org/
       - run: yarn install
+      - run: yarn nx build material-formtastic
       - run: yarn nx test material-formtastic
+      - run: yarn nx build angular-samples
       - run: yarn nx test angular-samples
