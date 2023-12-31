@@ -1,13 +1,18 @@
-import {Component} from '@angular/core';
-import {Observable} from "rxjs";
-import {FormDefinition, PrimaryKey, UntypedFormState} from "@material-formtastic/types";
-import {MaterialFormtasticService} from "@material-formtastic/material-formtastic.service";
-import {DemoItem} from "../helper/demo.item";
-import {createOwnBuild} from "@material-formtastic/http-loader.service";
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DemoItem } from '../helper/demo.item';
+import {
+  createOwnBuild,
+  FormDefinition,
+  MaterialFormtasticService,
+  PrimaryKey,
+  UntypedFormState
+} from 'material-formtastic';
+
 @Component({
-  selector: 'app-sample-basic-http-loader',
+  selector: 'sample-basic-http-loader',
   providers: [
-    ... createOwnBuild((forDefinition: boolean, primaryKey?: PrimaryKey) => {
+    ...createOwnBuild((forDefinition: boolean, primaryKey?: PrimaryKey) => {
       return forDefinition ? 'assets/demo-definition.json' : `assets/demo-${primaryKey}.json`;
     })
   ],

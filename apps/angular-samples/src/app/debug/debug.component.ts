@@ -1,7 +1,7 @@
-import {Component, Input} from '@angular/core';
-import {FormDefinition, UntypedFormState} from "@material-formtastic/types";
-import {Observable} from "rxjs";
-import {DemoItem} from "../helper/demo.item";
+import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DemoItem } from '../helper/demo.item';
+import { FormDefinition, UntypedFormState } from 'material-formtastic';
 
 @Component({
   selector: 'sample-debug',

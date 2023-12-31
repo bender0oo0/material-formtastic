@@ -40,3 +40,9 @@ Thumbs.db
 
 .nx/cache
 .angular
+
+apps/asp-net-core-samples/Api/bin/
+
+apps/asp-net-core-samples/Api/obj/
+
+.yarn/install-state.gz

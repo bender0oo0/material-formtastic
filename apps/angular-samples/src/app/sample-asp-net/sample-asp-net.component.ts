@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
-import {FormDefinition, UntypedFormState} from "@material-formtastic/types";
-import {News} from "../helper/sample-helper";
-import {MaterialFormtasticService} from "@material-formtastic/material-formtastic.service";
-import {Observable} from "rxjs";
-import {createDefaultBuild} from "@material-formtastic/http-loader.service";
+import { Observable } from 'rxjs';
+import { createDefaultBuild, FormDefinition, MaterialFormtasticService, UntypedFormState } from 'material-formtastic';
+import { News } from '../helper/news';
 
 @Component({
-  selector: 'sample-sample-asp-net',
+  selector: 'sample-asp-net',
   templateUrl: './sample-asp-net.component.html',
   providers: [
-    ... createDefaultBuild("/api/news"),
+    ...createDefaultBuild('/api/news')
   ],
   styleUrl: './sample-asp-net.component.scss'
 })

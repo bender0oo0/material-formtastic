@@ -19,7 +19,8 @@
           "apps/angular-samples/src/favicon.ico",
           "apps/angular-samples/src/assets"
         ],
-        "styles": ["apps/angular-samples/src/styles.css"],
+        "inlineStyleLanguage": "scss",
+        "styles": ["apps/angular-samples/src/styles.scss"],
         "scripts": []
       },
       "configurations": {

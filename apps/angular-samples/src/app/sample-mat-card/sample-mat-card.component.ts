@@ -1,17 +1,17 @@
-import {Component} from '@angular/core';
-import {FormDefinition, UntypedFormState} from "@material-formtastic/types";
-import {News, NewsLoader} from "../helper/sample-helper";
-import {MaterialFormtasticService} from "@material-formtastic/material-formtastic.service";
-import {Observable} from "rxjs";
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { NewsLoader } from '../helper/news-loader.service';
+import { FormDefinition, MaterialFormtasticService, UntypedFormState } from 'material-formtastic';
+import { News } from '../helper/news';
 
 @Component({
-  selector: 'sample-sample-mat-card',
+  selector: 'sample-mat-card',
   templateUrl: './sample-mat-card.component.html',
   providers: [
     NewsLoader,
     {
       provide: MaterialFormtasticService,
-      deps: [NewsLoader],
+      deps: [NewsLoader]
     }
   ],
   styleUrl: './sample-mat-card.component.scss'

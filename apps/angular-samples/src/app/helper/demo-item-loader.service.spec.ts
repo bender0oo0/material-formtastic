@@ -1,5 +1,5 @@
 import { DemoItemLoader } from './demo-item-loader.service';
-import {PrimaryKey} from "@material-formtastic/types";
+import { PrimaryKey } from 'material-formtastic';
 
 describe('DemoItemLoader', () => {
   let loader: DemoItemLoader;
