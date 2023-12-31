@@ -20,7 +20,7 @@ export class NewsLoader extends AbstractLoaderService {
 const defNews: Definition<News> = {
   id: {
     type: FormFieldType.NUMBER,
-    span: 6,
+    span: 3,
     required: true,
     isPrimaryKey: true
   },
@@ -28,13 +28,13 @@ const defNews: Definition<News> = {
     type: FormFieldType.STRING,
     required: true,
     maxLength: 100,
-    span: 18
+    span: 9
   },
   text: {
     type: FormFieldType.TEXT,
     required: true,
     maxLength: 4000,
-    span: 24
+    span: 12
   }
 };
 
