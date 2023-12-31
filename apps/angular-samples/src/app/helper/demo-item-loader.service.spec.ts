@@ -11,7 +11,7 @@ describe('DemoItemLoader', () => {
   it('loadValue should return an Observable of item', done => {
     const primaryKey: PrimaryKey = 'test';
     loader.loadValue(primaryKey).subscribe(item => {
-      expect(item).toEqual({});
+      expect(item).toMatchSnapshot();
       done();
     });
   });

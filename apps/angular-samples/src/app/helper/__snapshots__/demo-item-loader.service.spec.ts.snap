@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DemoItemLoader loadValue should return an Observable of item 1`] = `
+{
+  "color": 3,
+  "color2": 1,
+  "color3": [
+    2,
+    3,
+  ],
+  "confirmed2": true,
+  "description": "description 123",
+  "description2": "description 123 readonly",
+  "description3": "description 123 disabled",
+  "enabled2": true,
+  "id": 11,
+  "id2": 12,
+  "id3": 14,
+  "name": "bernd",
+  "name2": "bernd readonly",
+  "name3": "bernd disabled",
+}
+`;
