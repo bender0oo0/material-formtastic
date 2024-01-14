@@ -3040,7 +3040,7 @@ __metadata:
     eslint-config-prettier: "npm:9.1.0"
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
-    jest-preset-angular: "npm:13.1.4"
+    jest-preset-angular: "npm:13.1.6"
     jsonc-eslint-parser: "npm:2.4.0"
     ng-packagr: "npm:17.0.3"
     nx: "npm:17.2.8"
@@ -10125,9 +10125,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-preset-angular@npm:13.1.4":
-  version: 13.1.4
-  resolution: "jest-preset-angular@npm:13.1.4"
+"jest-preset-angular@npm:13.1.6":
+  version: 13.1.6
+  resolution: "jest-preset-angular@npm:13.1.6"
   dependencies:
     bs-logger: "npm:^0.2.6"
     esbuild: "npm:>=0.13.8"
@@ -10146,7 +10146,7 @@ __metadata:
   dependenciesMeta:
     esbuild:
       optional: true
-  checksum: a609deb98237505dfd9d81b8c41c385acd7a13af76609bb417144c4258cb2be2da7e87a46d74bfea36086fdfaa9a6b21a661452bbd9fb0a5552f514710e350fb
+  checksum: 3858903f8448a4b9b2ea70ac3fc47cf7245c6b3b65cbfa6016d434c8f27d205fc6f1be474efd821edaaedf70cc966e1b195d0eda65af7220912e2bf4729632e8
   languageName: node
   linkType: hard
 
